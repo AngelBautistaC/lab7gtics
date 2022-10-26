@@ -21,9 +21,9 @@ public class Accione {
     @Column(name = "fecha")
     private Instant fecha;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "usuarios_id", nullable = false)
-    private Usuario usuarios;
+    @ManyToOne
+    @JoinColumn(name = "usuarios_id")
+    private Usuario usuarios_id;
 
 
 }
