@@ -41,6 +41,4 @@ public class Usuario {
 
     @Column(name = "fecha_registro")
     private Instant fechaRegistro;
-
-
 }

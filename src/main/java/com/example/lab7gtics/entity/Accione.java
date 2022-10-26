@@ -1,9 +1,14 @@
 package com.example.lab7gtics.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "acciones")
 public class Accione {
     @Id
@@ -20,36 +25,5 @@ public class Accione {
     @JoinColumn(name = "usuarios_id", nullable = false)
     private Usuario usuarios;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Double getMonto() {
-        return monto;
-    }
-
-    public void setMonto(Double monto) {
-        this.monto = monto;
-    }
-
-    public Instant getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Instant fecha) {
-        this.fecha = fecha;
-    }
-
-    public Usuario getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(Usuario usuarios) {
-        this.usuarios = usuarios;
-    }
 
 }

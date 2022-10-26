@@ -32,6 +32,11 @@ public class Pago {
     @JoinColumn(name = "creditos_id", nullable = false)
     private Credito creditos;
 
+    public Usuario getUsuarios() {
+        return usuarios;
+    }
 
-
+    public void setUsuarios(Usuario usuarios) {
+        this.usuarios = usuarios;
+    }
 }

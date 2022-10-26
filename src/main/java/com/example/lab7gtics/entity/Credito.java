@@ -1,9 +1,14 @@
 package com.example.lab7gtics.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "creditos")
 public class Credito {
     @Id
@@ -24,44 +29,5 @@ public class Credito {
     @Column(name = "interes")
     private Double interes;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getMonto() {
-        return monto;
-    }
-
-    public void setMonto(String monto) {
-        this.monto = monto;
-    }
-
-    public Usuario getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(Usuario usuarios) {
-        this.usuarios = usuarios;
-    }
-
-    public Instant getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Instant fecha) {
-        this.fecha = fecha;
-    }
-
-    public Double getInteres() {
-        return interes;
-    }
-
-    public void setInteres(Double interes) {
-        this.interes = interes;
-    }
 
 }
