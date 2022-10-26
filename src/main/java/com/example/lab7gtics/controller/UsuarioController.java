@@ -43,7 +43,7 @@ public class UsuarioController {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<HashMap<String,String>> gestionarErrorCrearProducto(){
+    public ResponseEntity<HashMap<String,String>> gestionarErrorCrearUsuario(){
         HashMap<String,String> hashMap = new HashMap<>();
         hashMap.put("error","true");
         hashMap.put("msg","Debes enviar el usuario como json");
