@@ -27,6 +27,7 @@ public class SolicitudController {
         //prueba
         solicitudRepository.save(solicitude);
         hashMap.put("idCreado", String.valueOf(solicitude.getId()));
+        hashMap.put("Monto", String.valueOf(solicitude.getSolicitud_monto()));
 
 
         return ResponseEntity.status(HttpStatus.CREATED).body(hashMap);
