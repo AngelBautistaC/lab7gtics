@@ -23,9 +23,8 @@ public class SolicitudController {
             ){
 
         HashMap<String,String> hashMap = new HashMap<>();
-        solicitude.setSolicitudEstado("pendiente");
+       solicitude.setSolicitud_estado("pendiente");
         //prueba
-        Usuario usuario = solicitude.getUsuarios();
         solicitudRepository.save(solicitude);
         hashMap.put("idCreado", String.valueOf(solicitude.getId()));
 

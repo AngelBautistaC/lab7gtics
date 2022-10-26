@@ -1,10 +1,15 @@
 package com.example.lab7gtics.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
 @Table(name = "solicitudes")
+@Getter
+@Setter
 public class Solicitude {
     @Id
     @Column(name = "id", nullable = false)
@@ -26,52 +31,5 @@ public class Solicitude {
     @Column(name = "solicitud_estado", length = 45)
     private String solicitud_estado;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getSolicitudProducto() {
-        return solicitud_producto;
-    }
-
-    public void setSolicitudProducto(String solicitudProducto) {
-        this.solicitud_producto = solicitudProducto;
-    }
-
-    public Double getSolicitudMonto() {
-        return solicitud_monto;
-    }
-
-    public void setSolicitudMonto(Double solicitudMonto) {
-        this.solicitud_monto = solicitudMonto;
-    }
-
-    public Instant getSolicitudFecha() {
-        return solicitud_fecha;
-    }
-
-    public void setSolicitudFecha(Instant solicitudFecha) {
-        this.solicitud_fecha = solicitudFecha;
-    }
-
-    public Usuario getUsuarios() {
-        return usuarios_id;
-    }
-
-    public void setUsuarios(Usuario usuarios) {
-        this.usuarios_id = usuarios;
-    }
-
-    public String getSolicitudEstado() {
-        return solicitud_estado;
-    }
-
-    public void setSolicitudEstado(String solicitudEstado) {
-        this.solicitud_estado = solicitudEstado;
-    }
 
 }
