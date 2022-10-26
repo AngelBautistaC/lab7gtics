@@ -1,6 +1,7 @@
 package com.example.lab7gtics.controller;
 
 import com.example.lab7gtics.entity.Solicitude;
+import com.example.lab7gtics.entity.Usuario;
 import com.example.lab7gtics.repository.SolicitudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,9 +23,11 @@ public class SolicitudController {
             ){
 
         HashMap<String,String> hashMap = new HashMap<>();
+        solicitude.setSolicitudEstado("pendiente");
+        //prueba
+        Usuario usuario = solicitude.getUsuarios();
         solicitudRepository.save(solicitude);
         hashMap.put("idCreado", String.valueOf(solicitude.getId()));
-
 
 
         return ResponseEntity.status(HttpStatus.CREATED).body(hashMap);

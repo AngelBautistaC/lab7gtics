@@ -11,20 +11,20 @@ public class Solicitude {
     private Integer id;
 
     @Column(name = "solicitud_producto", length = 45)
-    private String solicitudProducto;
+    private String solicitud_producto;
 
     @Column(name = "solicitud_monto")
-    private Double solicitudMonto;
+    private Double solicitud_monto;
 
     @Column(name = "solicitud_fecha")
-    private Instant solicitudFecha;
+    private Instant solicitud_fecha;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "usuarios_id", nullable = false)
-    private Usuario usuarios;
+    @ManyToOne
+    @JoinColumn(name = "usuarios_id")
+    private Usuario usuarios_id;
 
     @Column(name = "solicitud_estado", length = 45)
-    private String solicitudEstado;
+    private String solicitud_estado;
 
     public Integer getId() {
         return id;
@@ -35,43 +35,43 @@ public class Solicitude {
     }
 
     public String getSolicitudProducto() {
-        return solicitudProducto;
+        return solicitud_producto;
     }
 
     public void setSolicitudProducto(String solicitudProducto) {
-        this.solicitudProducto = solicitudProducto;
+        this.solicitud_producto = solicitudProducto;
     }
 
     public Double getSolicitudMonto() {
-        return solicitudMonto;
+        return solicitud_monto;
     }
 
     public void setSolicitudMonto(Double solicitudMonto) {
-        this.solicitudMonto = solicitudMonto;
+        this.solicitud_monto = solicitudMonto;
     }
 
     public Instant getSolicitudFecha() {
-        return solicitudFecha;
+        return solicitud_fecha;
     }
 
     public void setSolicitudFecha(Instant solicitudFecha) {
-        this.solicitudFecha = solicitudFecha;
+        this.solicitud_fecha = solicitudFecha;
     }
 
     public Usuario getUsuarios() {
-        return usuarios;
+        return usuarios_id;
     }
 
     public void setUsuarios(Usuario usuarios) {
-        this.usuarios = usuarios;
+        this.usuarios_id = usuarios;
     }
 
     public String getSolicitudEstado() {
-        return solicitudEstado;
+        return solicitud_estado;
     }
 
     public void setSolicitudEstado(String solicitudEstado) {
-        this.solicitudEstado = solicitudEstado;
+        this.solicitud_estado = solicitudEstado;
     }
 
 }
