@@ -1,9 +1,14 @@
 package com.example.lab7gtics.entity;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.Instant;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "pagos")
 public class Pago {
     @Id
@@ -13,7 +18,7 @@ public class Pago {
     @Column(name = "monto")
     private Double monto;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "usuarios_id", nullable = false)
     private Usuario usuarios;
 
@@ -23,56 +28,10 @@ public class Pago {
     @Column(name = "fecha")
     private Instant fecha;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "creditos_id", nullable = false)
     private Credito creditos;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Double getMonto() {
-        return monto;
-    }
-
-    public void setMonto(Double monto) {
-        this.monto = monto;
-    }
-
-    public Usuario getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(Usuario usuarios) {
-        this.usuarios = usuarios;
-    }
-
-    public String getTipoPago() {
-        return tipoPago;
-    }
-
-    public void setTipoPago(String tipoPago) {
-        this.tipoPago = tipoPago;
-    }
-
-    public Instant getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Instant fecha) {
-        this.fecha = fecha;
-    }
-
-    public Credito getCreditos() {
-        return creditos;
-    }
-
-    public void setCreditos(Credito creditos) {
-        this.creditos = creditos;
-    }
 
 }

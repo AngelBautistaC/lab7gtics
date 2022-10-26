@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
@@ -33,20 +34,26 @@ public class UsuarioController {
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<HashMap<String,String>> crearUsuario(@RequestBody Usuario usuario){
-        HashMap<String,String> hashMap = new HashMap<>();
+    public ResponseEntity<HashMap<String,Object>> crearUsuario(
+            @RequestBody Usuario usuario,
+            @RequestParam(value = "fetchId", required = false)boolean fetchId){
+        HashMap<String,Object> hashMap = new HashMap<>();
 
         usuarioRepository.save(usuario);
-
-        hashMap.put("idCreado", String.valueOf(usuario.getId()));
+        if(fetchId) {
+            hashMap.put("id", String.valueOf(usuario.getId()));
+        }
+        hashMap.put("id Creado",String.valueOf(usuario.getId()));
         return ResponseEntity.status(HttpStatus.CREATED).body(hashMap);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<HashMap<String,String>> gestionarErrorCrearUsuario(){
+    public ResponseEntity<HashMap<String,String>> gestionarErrorCrearUsuario(HttpServletRequest request){
         HashMap<String,String> hashMap = new HashMap<>();
-        hashMap.put("error","true");
-        hashMap.put("msg","Debes enviar el usuario como json");
+        if(request.getMethod().equals("POST")){
+            hashMap.put("error","true");
+            hashMap.put("msg","Debes enviar el usuario como json");
+        }
         return ResponseEntity.badRequest().body(hashMap);
     }
 }
