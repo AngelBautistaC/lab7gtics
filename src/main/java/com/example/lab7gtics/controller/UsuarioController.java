@@ -10,10 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -33,5 +30,23 @@ public class UsuarioController {
     @GetMapping("/listar")
     public List<Usuario> listaUsuarios() {
         return usuarioRepository.listaUsers();
+    }
+
+    @PostMapping("/crear")
+    public ResponseEntity<HashMap<String,String>> crearUsuario(@RequestBody Usuario usuario){
+        HashMap<String,String> hashMap = new HashMap<>();
+
+        usuarioRepository.save(usuario);
+
+        hashMap.put("idCreado", String.valueOf(usuario.getId()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(hashMap);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<HashMap<String,String>> gestionarErrorCrearProducto(){
+        HashMap<String,String> hashMap = new HashMap<>();
+        hashMap.put("error","true");
+        hashMap.put("msg","Debes enviar el usuario como json");
+        return ResponseEntity.badRequest().body(hashMap);
     }
 }
