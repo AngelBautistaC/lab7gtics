@@ -97,6 +97,32 @@ public class SolicitudController {
         }
     }
 
+    @PostMapping("/borrarSolicitud")
+    public ResponseEntity<HashMap<String,String>> borrarSolicitud(
+            @RequestParam("idSolicitud") String id
+    ) {
+        HashMap<String, String> hashMap = new HashMap<>();
+        try {
+            Optional<Solicitude> opt = solicitudRepository.findById(Integer.valueOf(id));
+            if (opt.isPresent()) {
+                Solicitude solicitude = opt.get();
+                if (solicitude.getSolicitud_estado().equals("denegar")) {
+                    solicitudRepository.delete(solicitude);
+                    hashMap.put("id solicitud borrada", String.valueOf(solicitude.getId()));
+                } else {
+                    hashMap.put("Solicitud ya antendida", String.valueOf(solicitude.getId()));
+                }
+                return ResponseEntity.status(HttpStatus.CREATED).body(hashMap);
+            } else {
+                hashMap.put("Aviso", "El id ingresa no se encuentra");
+                return ResponseEntity.status(HttpStatus.CREATED).body(hashMap);
+            }
+        } catch (NumberFormatException e) {
+            hashMap.put("error", "el valor ingresado no es un numero");
+            return ResponseEntity.status(HttpStatus.CREATED).body(hashMap);
+        }
+    }
+
 
 
 }
