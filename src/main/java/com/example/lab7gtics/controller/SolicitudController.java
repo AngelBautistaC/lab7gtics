@@ -70,7 +70,7 @@ public class SolicitudController {
 
     }
 
-    @PostMapping("/denegarSolicitud")
+    @PutMapping("/denegarSolicitud")
     public ResponseEntity<HashMap<String,String>> denegarSolicitud(
             @RequestParam("idSolicitud") String id
     ) {
@@ -97,7 +97,7 @@ public class SolicitudController {
         }
     }
 
-    @PostMapping("/borrarSolicitud")
+    @DeleteMapping("/borrarSolicitud")
     public ResponseEntity<HashMap<String,String>> borrarSolicitud(
             @RequestParam("idSolicitud") String id
     ) {
@@ -122,7 +122,4 @@ public class SolicitudController {
             return ResponseEntity.status(HttpStatus.CREATED).body(hashMap);
         }
     }
-
-
-
 }
